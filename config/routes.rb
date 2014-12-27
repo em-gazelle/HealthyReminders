@@ -1,13 +1,12 @@
 OpTakeMyMeds::Application.routes.draw do
   
-
-  resources :records
-
-
-  resources :tasks
-
-
   devise_for :users
+
+  resources :users do
+    resources :tasks do
+      resources :records
+    end
+  end
 
   root :to => 'welcome#index'
 
