@@ -18,7 +18,8 @@
     <td><%= task.frequency %></td>
     <td><%#= task.reminder_time %></td>
     <td><%= task.message %></td>
-    <td><%= link_to "Show", [@user, task] %></td>
+    <td><%#= link_to "Show", [@user, task] %></td>
+    <td><%= link_to "Add Record", new_user_task_record_path(@user, task) %></td>    
     <td><%= link_to "Edit", edit_user_task_path(@user, task) %></td>
     <td><%= link_to "Destroy", [@user, task], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

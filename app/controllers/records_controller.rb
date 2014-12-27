@@ -26,7 +26,9 @@ class RecordsController < ApplicationController
   # GET /records/new
   # GET /records/new.json
   def new
-    @record = Record.new
+    @user = current_user
+    @task = Task.find(params[:task_id])
+    @record = @task.records.build(params[:record])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,11 +44,13 @@ class RecordsController < ApplicationController
   # POST /records
   # POST /records.json
   def create
-    @record = Record.new(params[:record])
+    @user = current_user
+    @task = Task.find(params[:task_id])
+    @record = @task.records.build(params[:record])
 
     respond_to do |format|
       if @record.save
-        format.html { redirect_to @record, notice: 'Record was successfully created.' }
+        format.html { redirect_to user_tasks_path, notice: 'Record was successfully created.' }
         format.json { render json: @record, status: :created, location: @record }
       else
         format.html { render action: "new" }
