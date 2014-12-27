@@ -1,14 +1,13 @@
-<h1>Here are your tasks...</h1>
-
 <% @tasks.each do |task| %>
-  <tr>
-  <%= task.reminder_type %>
-  </br>
-  <%= task.records %>
-  </tr>
-  </br></br>
+  <h2>Your Progress: <%= task.reminder_type %></h2>
+  <% if task.reminder_type == "Weight" %>
+    <%= line_chart task.records.group_by_month(:created_at, format: "%B %d, %Y").maximum(:weight), min: 90, discrete: true %>
+  <% else %>
+    <%= pie_chart task.records.group(:completed).count %>
+  <% end %>
 <% end %>
 
+<h1>Here are your tasks...</h1>
 <table>
   <tr>
     <th>Reminder type</th>
