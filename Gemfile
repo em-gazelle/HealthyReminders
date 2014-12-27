@@ -24,7 +24,13 @@ gem 'jquery-rails'
 # Gem used for Authentication
 gem 'devise'
 
+#Gem used for Nested Resources
 gem 'simple_form'
+
+# For Record Data Visualization:
+gem 'chartkick'
+gem 'groupdate'
+gem 'active_median'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

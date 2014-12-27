@@ -2,13 +2,14 @@ OpTakeMyMeds::Application.routes.draw do
   
   devise_for :users
 
+  root to: 'tasks#index'
+
   resources :users do
     resources :tasks do
       resources :records
     end
   end
 
-  root :to => 'welcome#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
