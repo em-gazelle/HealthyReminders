@@ -1,0 +1,14 @@
+common: &common
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  username: hilaire
+  password: 
+
+development:
+  <<: *common
+  database: HelpMeTakeMeds
+
+test:
+  <<: *common
+  database: HelpMeTakeMeds
