@@ -3,6 +3,7 @@
 <p class="navbar-text pull-right">
 <% if user_signed_in? %>
 <h1> Hi, <%= current_user.nickname %>!</h1>
+Your User ID # is: <%= current_user.id %>
 <h3> Your phone number is <%= current_user.phone_number %>.</h3>
 
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |

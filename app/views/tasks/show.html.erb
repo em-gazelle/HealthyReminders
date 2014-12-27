@@ -10,21 +10,15 @@
   <%= @task.frequency %>
 </p>
 
-<p>
+<!-- <p>
   <b>Reminder time:</b>
-  <%= @task.reminder_time %>
-</p>
+  <%#= @task.reminder_time %>
+</p> -->
 
 <p>
   <b>Message:</b>
   <%= @task.message %>
 </p>
 
-<p>
-  <b>User:</b>
-  <%= @task.user %>
-</p>
-
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Edit', edit_user_task_path(@user,@task) %> |
+<%= link_to 'Back', user_tasks_path %>
