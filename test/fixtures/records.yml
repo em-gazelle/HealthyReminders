@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  weight: 1
+  completed: false
+  task: 
+
+two:
+  weight: 1
+  completed: false
+  task: 

@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141227032008) do
+ActiveRecord::Schema.define(:version => 20141227040140) do
+
+  create_table "records", :force => true do |t|
+    t.integer  "weight"
+    t.boolean  "completed"
+    t.integer  "task_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "records", ["task_id"], :name => "index_records_on_task_id"
+
+  create_table "tasks", :force => true do |t|
+    t.string   "reminder_type"
+    t.string   "frequency"
+    t.time     "reminder_time"
+    t.text     "message"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "tasks", ["user_id"], :name => "index_tasks_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

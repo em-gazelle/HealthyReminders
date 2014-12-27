@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Reminder type:</b>
+  <%= @task.reminder_type %>
+</p>
+
+<p>
+  <b>Frequency:</b>
+  <%= @task.frequency %>
+</p>
+
+<p>
+  <b>Reminder time:</b>
+  <%= @task.reminder_time %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @task.message %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @task.user %>
+</p>
+
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

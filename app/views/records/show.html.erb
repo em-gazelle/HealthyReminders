@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Weight:</b>
+  <%= @record.weight %>
+</p>
+
+<p>
+  <b>Completed:</b>
+  <%= @record.completed %>
+</p>
+
+<p>
+  <b>Task:</b>
+  <%= @record.task %>
+</p>
+
+
+<%= link_to 'Edit', edit_record_path(@record) %> |
+<%= link_to 'Back', records_path %>

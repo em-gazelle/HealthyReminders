@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  reminder_type: MyString
+  frequency: MyString
+  reminder_time: 2014-12-26 19:57:48
+  message: MyText
+  user: 
+
+two:
+  reminder_type: MyString
+  frequency: MyString
+  reminder_time: 2014-12-26 19:57:48
+  message: MyText
+  user: 
