@@ -48,6 +48,24 @@ class RecordsController < ApplicationController
     @task = Task.find(params[:task_id])
     @record = @task.records.build(params[:record])
 
+    # set up a client to talk to the Twilio REST API 
+    account_sid = 'ACce2ac884ee78da5155fc87f7bbc0cb4a' 
+    auth_token = '40f5a6b6a24f8cae7760b7151563a18a' 
+    @client = Twilio::REST::Client.new account_sid, auth_token 
+    # get user's number
+    @user_number = "+" + current_user.phone_number
+
+    # Add user response to records database: yes/no for .completed & # for .weight
+    # Set 'date_sent' to 60 minutes ago: for simplicity, we'll only allow users to set one reminder per hour block
+    # All messages sent after one hour will not "count". All messages sent within hour will only belong to most recently sent out reminder....
+    @client.account.messages.list({date_sent: 5.minute.ago.to_s(:rfc822), from: @user_number}).each do |message|
+      if message.body == ('true' || 'false')
+        @record.completed = message.body
+      else
+        @record.weight = message.body
+      end
+    end
+
     respond_to do |format|
       if @record.save
         format.html { redirect_to user_tasks_path, notice: 'Record was successfully created.' }
