@@ -16,6 +16,25 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    
+    # set up a client to talk to the Twilio REST API 
+    account_sid = 'ACce2ac884ee78da5155fc87f7bbc0cb4a' 
+    auth_token = '40f5a6b6a24f8cae7760b7151563a18a' 
+    @client = Twilio::REST::Client.new account_sid, auth_token 
+
+    puts "current user's phone number:"
+    @user_number = "+" + current_user.phone_number
+    puts @user_number
+
+    puts "**********************************************Separate immediately to only return messages within past hour*********"
+    @client.account.messages.list({date_sent: 60.minute.ago.to_s(:rfc822), from: @user_number}).each do |message|
+      puts message.body
+      puts "Date sent: #{message.date_sent}"
+      puts "----------------"
+
+    end
+
+
     @user = current_user
     @task = Task.find(params[:id])
 
@@ -28,6 +47,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   # GET /tasks/new.json
   def new
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! in new method"
     @task = Task.new
     @user = current_user
 
@@ -46,8 +66,23 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! increate method"
     @user = current_user
     @task = @user.tasks.build(params[:task])
+
+
+    account_sid = 'ACce2ac884ee78da5155fc87f7bbc0cb4a' 
+    auth_token = '40f5a6b6a24f8cae7760b7151563a18a' 
+    @client = Twilio::REST::Client.new account_sid, auth_token 
+
+    @client.account.messages.create({
+      :from => '+16087136449', 
+      :to => '8155203817', 
+      :body => @task.message  
+    })
+
+
+
 
     respond_to do |format|
       if @task.save

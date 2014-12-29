@@ -32,6 +32,9 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'active_median'
 
+# For SMS reminders, and for receiving data back via texts from users:
+gem 'twilio-ruby'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
