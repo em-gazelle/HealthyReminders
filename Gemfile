@@ -35,6 +35,9 @@ gem 'active_median'
 # For SMS reminders, and for receiving data back via texts from users:
 gem 'twilio-ruby'
 
+# Used to send repeating and delayed "healthy reminders" -- gem Delayed Jobs
+gem 'rufus-scheduler'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
