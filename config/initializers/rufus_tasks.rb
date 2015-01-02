@@ -9,26 +9,17 @@ auth_token = '40f5a6b6a24f8cae7760b7151563a18a'
 @tasks = Task.all
 @users = User.all
 
-@task1 = Task.find(3)
-puts "Task 1: #{@task1.inspect}"
-@task2 = Task.find(11) 
-puts "Task 2: #{@task2.inspect}"
-puts "*************************************************************************************"
-
-scheduler.in '20s' do
-	puts @task1.message
-	@client.account.messages.create({
-	  :from => '+16087136449', 
-	  :to => '+18155203817', 
-	  :body => @task1.message
-	})
-end
-
-scheduler.in '50s' do
-	puts @task2.message
-	@client.account.messages.create({
-	  :from => '+16087136449', 
-	  :to => '+18155203817', 
-	  :body => @task2.message
-	})
+@users.last.tasks.each do |task|
+	# Texts should be sent at HH:MM. Time entered by users, in Tasks database
+	@cron_time = "#{task.reminder_time.strftime('%M')} #{task.reminder_time.strftime('%H')} * * *"
+	# Scheduling Texts to go out at designated time, daily
+	scheduler.cron @cron_time do
+		puts "Sending out this message: #{task.message} at: #{task.reminder_time}, aka #{Time.now}"
+		puts "-------"
+		@client.account.messages.create({
+		  :from => '+16087136449', 
+		  :to => @users.last.phone_number, 
+		  :body => task.message
+		})
+	end
 end
