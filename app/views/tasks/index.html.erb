@@ -1,5 +1,3 @@
-<script type="text/javascript" src="google.com/jsapi"></script>
-
 <% @tasks.each do |task| %>
   <h2>Your Progress: <%= task.reminder_type %></h2>
   <% if task.reminder_type == "Weight" %>
