@@ -1,6 +1,6 @@
 <% @tasks.each do |task| %>
   <h2>Your Progress: <%= task.reminder_type %></h2>
-  <% if task.reminder_type == "Weight" %>
+  <% if task.reminder_type == "Weight" || "Weigh-In" %>
     <%= line_chart task.records.group_by_month(:created_at, format: "%B %d, %Y").maximum(:weight), min: 90, discrete: true %>
   <% else %>
     <%= pie_chart task.records.group(:completed).count %>
