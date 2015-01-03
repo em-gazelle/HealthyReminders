@@ -18,12 +18,16 @@ auth_token = '40f5a6b6a24f8cae7760b7151563a18a'
 	@users.each do |user|
 		# Phone number to send texts
 		@send_to = user.phone_number
+		puts "******************************************USer phone number: #{@send_to}"
 		# Temporary: Twilio can only send texts to users with a phone number and tasks with reminder times + messages. Will be unnecessary after adding more info into the seed file and validations
 		if user.phone_number.blank? == false
+		puts "******************************************USer phone number is not empty..."
 			# For each user, send out all reminder messages
 			user.tasks.each do |task|
 				# Texts should be sent at HH:MM. Time entered by users, in Tasks database
 				@cron_time = "#{task.reminder_time.strftime('%M')} #{task.reminder_time.strftime('%H')} * * *"
+				puts "**************************************** #{task.reminder_type} is being evaluated.........."
+				puts "***************************************************** and is to be sent out: #{@cron_time}"
 				# Using Rufus_Scheduler to send out texts through Twilio at designated time, daily
 				scheduler.cron @cron_time do
 					puts "Sending out this message: #{task.message} at: #{task.reminder_time}, aka #{Time.now}"
