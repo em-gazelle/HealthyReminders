@@ -8,11 +8,12 @@ auth_token = '40f5a6b6a24f8cae7760b7151563a18a'
 @client = Twilio::REST::Client.new account_sid, auth_token 
 
 # Look for new tasks in the database to schedule to send out once a day
-scheduler.every '24h' do
+# scheduler.every '24h' do
 	# Grabbing tasks and users for Phone Numbers + messages
 	@tasks = Task.all
 	# Refactor: Grab only relevant information (Phone + ID)
 	@users = User.all
+	puts "All information = obtained for Rufus Scheduler******************************************************************************"
 
 	@users.each do |user|
 		# Phone number to send texts
@@ -26,7 +27,7 @@ scheduler.every '24h' do
 				# Using Rufus_Scheduler to send out texts through Twilio at designated time, daily
 				scheduler.cron @cron_time do
 					puts "Sending out this message: #{task.message} at: #{task.reminder_time}, aka #{Time.now}"
-					puts "-------"
+					puts "-------******************************************************"
 					# Using Twilio to send messages
 					@client.account.messages.create({
 					  :from => '+16087136449', 
@@ -37,4 +38,4 @@ scheduler.every '24h' do
 			end
 		end
 	end
-end
+# end
