@@ -12,7 +12,7 @@
   <tr>
     <th>Reminder type</th>
     <th>Frequency</th>
-<!--     <th>Reminder time</th> -->
+    <th>Reminder time</th>
     <th>Message</th>
     <th></th>
     <th></th>
@@ -24,7 +24,7 @@
   <tr>
     <td><%= task.reminder_type %></td>
     <td><%= task.frequency %></td>
-    <td><%#= task.reminder_time %></td>
+    <td><%= task.reminder_time %></td>
     <td><%= task.message %></td>
     <td><%= link_to "Show", [@user, task] %></td>
     <td><%= link_to "Add Record", new_user_task_record_path(@user, task) %></td>    
