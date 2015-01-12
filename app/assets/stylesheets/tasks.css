@@ -1,0 +1,36 @@
+// Place all the styles related to the Tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul {
+	list-style-type: none;
+	display: inline;
+}
+
+ul li {
+	list-style-type: none;
+	display: inline;
+}
+
+.horizontal li {
+	display: inline;
+}
+
+#user-charts {
+	background-color: red;
+	width: 90%;
+	table-layout: fixed;
+}
+
+#user-charts tr {
+	backgrounpd-color: black;
+}
+
+#user-charts tr td {
+	background-color: yellow;
+}
+
+/*.pie_progress {
+	height: 100px;
+	width: 100px;
+}*/

@@ -11,3 +11,32 @@
  *= require_self
  *= require_tree .
  */
+
+.profile-buttons {
+	text-align: right;
+	font: 400 10px/1.0 'Merienda One', Helvetica, sans-serif;
+    color: rgba(0,0,0,0.7);
+}
+
+.profile-buttons:hover {
+	font: 400 10px/1.0 'Merienda One', Helvetica, sans-serif;
+    color: rgba(0,0,0,0.7);
+    text-shadow: 3px 3px 3px #fff;
+    background-color: transparent;
+}
+
+.greeting {
+  font: 400 60px/1.0 'Merienda One', Helvetica, sans-serif;
+  color: rgba(0,0,0,0.7);
+  text-shadow: 3px 3px 3px #fff;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.greeting-sub {
+  font: 400 30px/1.0 'Merienda One', Helvetica, sans-serif;
+  color: rgba(0,0,0,0.7);
+  text-shadow: 3px 3px 3px #fff;
+  text-align: center;
+  margin-bottom: 50px;
+}

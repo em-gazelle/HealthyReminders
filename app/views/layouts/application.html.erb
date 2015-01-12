@@ -3,19 +3,23 @@
 <head>
   <title>OpTakeMyMeds</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link href="http://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet" type="text/css">
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+	<div class="profile-buttons">
+		<%= link_to 'Edit profile', edit_user_registration_path, :class => 'profile-buttons' %> |
+		<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'profile-buttons'  %>
+	</div>
+
 	<p class="navbar-text pull-right">
 	<% if user_signed_in? %>
-		<h1> Hi, <%= current_user.nickname %>!</h1>
-		Your User ID # is: <%= current_user.id %>
-		<h3> Your phone number is <%= current_user.phone_number %>.</h3>
-		<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-		<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+	<h1 class="greeting">Good to see you again, <%= current_user.nickname %>!</h1>
+	<h1 class="greeting-sub">Here's your progress:</h1>
+
 	<% else %>
 	  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
 	  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>

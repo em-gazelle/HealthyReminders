@@ -1,11 +1,23 @@
-<% @tasks.each do |task| %>
-  <h2>Your Progress: <%= task.reminder_type %></h2>
-  <% if task.reminder_type == "Weigh-In" %>
-    <%= line_chart task.records.group_by_month(:created_at, format: "%B %d, %Y").maximum(:weight), min: 90, discrete: true %>
-  <% else %>
-    <%= pie_chart task.records.group(:completed).count %>
-  <% end %>
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'tasks' %>
 <% end %>
+
+<table id="user-charts">
+        <% @tasks.each_slice(3) do |row| %>
+<tr>
+        <% row.each do |task| %>
+<td>
+            Your Progress: <%= task.reminder_type %>
+            <% if task.reminder_type == ("Weigh-In" && "Weight") %>
+              <%= line_chart task.records.group_by_month(:created_at, format: "%B %d, %Y").maximum(:weight), min: 90, discrete: true %>
+            <% else %>
+              <%= pie_chart task.records.group(:completed).count, library: {backgroundColor: "black", margin: "0px"} %>
+            <% end %>
+</td>
+        <% end %>
+</tr>
+<% end %>
+</table>
 
 <h1>Here are your tasks...</h1>
 <table>
