@@ -34,3 +34,14 @@ ul li {
 	height: 100px;
 	width: 100px;
 }*/
+
+#charts-tasks {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+}
+
+#charts-tasks li {
+  display: table-cell;
+  width: auto;
+  text-align: center;

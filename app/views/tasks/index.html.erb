@@ -5,23 +5,25 @@
 <h1 class="greeting">Good to see you again, <%= current_user.nickname %>!</h1>
 <h1 class="greeting-sub">Here's your progress:</h1>
 
-
-<table id="user-charts">
-        <% @tasks.each_slice(3) do |row| %>
-<tr>
+<ul>
+  <% @tasks.each_slice(2) do |row| %>
+    <li>
+      <ul class="horizontal-list" id="charts-tasks">
         <% row.each do |task| %>
-<td>
-            Your Progress: <%= task.reminder_type %>
+          <li>
+            <%= task.reminder_type %>
             <% if task.reminder_type == ("Weigh-In" && "Weight") %>
-              <%= line_chart task.records.group_by_month(:created_at, format: "%B %d, %Y").maximum(:weight), min: 90, discrete: true %>
+              <%= line_chart task.records.group_by_month(:created_at, format: "%B %d, %Y").maximum(:weight), min: 90, discrete: true, library: {colors: ['#9fdfac']} %>
             <% else %>
-              <%= pie_chart task.records.group(:completed).count, library: {backgroundColor: "black", margin: "0px"} %>
+              <%= pie_chart task.records.group(:completed).count, library: {colors: ['#9fdfac', '#ffc3a0'] }  %>
             <% end %>
-</td>
+          </li>
         <% end %>
-</tr>
-<% end %>
-</table>
+      </ul>
+    </li>
+  <% end %>
+</ul>
+
 
 <h5 class="nav-links"><%= link_to "Manage Scheduled Messages", user_tasks_path(@user), :class => "nav-links" %></h5>
 <!-- AJAX Call : Insert all messages below -->
