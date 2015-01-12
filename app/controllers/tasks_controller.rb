@@ -51,20 +51,6 @@ class TasksController < ApplicationController
     @user = current_user
     @task = @user.tasks.build(params[:task])
 
-
-    account_sid = 'ACce2ac884ee78da5155fc87f7bbc0cb4a' 
-    auth_token = '40f5a6b6a24f8cae7760b7151563a18a' 
-    @client = Twilio::REST::Client.new account_sid, auth_token 
-
-    @client.account.messages.create({
-      :from => '+16087136449', 
-      :to => '8155203817', 
-      :body => @task.message  
-    })
-
-
-
-
     respond_to do |format|
       if @task.save
         format.html { redirect_to user_tasks_path, notice: 'Task was successfully created.' }
