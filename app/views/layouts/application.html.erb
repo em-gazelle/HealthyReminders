@@ -17,8 +17,6 @@
 
 	<p class="navbar-text pull-right">
 	<% if user_signed_in? %>
-	<h1 class="greeting">Good to see you again, <%= current_user.nickname %>!</h1>
-	<h1 class="greeting-sub">Here's your progress:</h1>
 
 	<% else %>
 	  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |

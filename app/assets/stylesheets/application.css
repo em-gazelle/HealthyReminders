@@ -12,21 +12,41 @@
  *= require_tree .
  */
 
+a:hover {
+	background-color: transparent;
+}
+
+.nav-links {
+  margin-top: 60px;
+  font: 400 15px/1.0 'Merienda One', Helvetica, sans-serif;
+  color: rgba(0,0,0,0.7);  
+  text-align: center;
+}
+
+.nav-links:hover {
+  margin-top: 60px;
+  font: 400 15px/1.0 'Merienda One', Helvetica, sans-serif;
+  color: rgba(0,0,0,0.7);  
+  text-align: center;
+  background-color: transparent;
+  text-shadow: 3px 3px 3px #fff;
+}
+
 .profile-buttons {
 	text-align: right;
-	font: 400 10px/1.0 'Merienda One', Helvetica, sans-serif;
-    color: rgba(0,0,0,0.7);
+	font: 400 12.5px/1.0 'Merienda One', Helvetica, sans-serif;
+  color: rgba(0,0,0,0.7);
 }
 
 .profile-buttons:hover {
-	font: 400 10px/1.0 'Merienda One', Helvetica, sans-serif;
-    color: rgba(0,0,0,0.7);
-    text-shadow: 3px 3px 3px #fff;
-    background-color: transparent;
+	font: 400 12.5px/1.0 'Merienda One', Helvetica, sans-serif;
+  color: rgba(0,0,0,0.7);
+  text-shadow: 3px 3px 3px #fff;
+  background-color: transparent;
 }
 
 .greeting {
-  font: 400 60px/1.0 'Merienda One', Helvetica, sans-serif;
+  font: 400 60px/1.2 'Merienda One', Helvetica, sans-serif;
   color: rgba(0,0,0,0.7);
   text-shadow: 3px 3px 3px #fff;
   margin-top: 20px;
@@ -39,4 +59,39 @@
   text-shadow: 3px 3px 3px #fff;
   text-align: center;
   margin-bottom: 50px;
+}
+
+.field {
+  font: 400 15px/1.2 'Merienda One', Helvetica, sans-serif;
+  color: rgba(0,0,0,0.7);
+  text-shadow: 3px 3px 3px #fff;
+}
+
+select {
+  font: 400 15px/1.2 'Merienda One', Helvetica, sans-serif;
+  color: rgba(0,0,0,0.7);
+  text-shadow: 3px 3px 3px #fff;
+}
+
+textarea {
+  font: 400 15px/1.2 'Merienda One', Helvetica, sans-serif;
+  color: rgba(0,0,0,0.7);
+  text-shadow: 3px 3px 3px #fff;  
+}
+
+input {
+  font: 400 15px/1.2 'Merienda One', Helvetica, sans-serif;
+  color: rgba(0,0,0,0.7);
+  text-shadow: 3px 3px 3px #fff;
+}
+
+.horizontal-list li {
+  display: inline-block;
+  font: 400 15px/1.2 'Merienda One', Helvetica, sans-serif;
+  color: rgba(0,0,0,0.7);
+  text-shadow: 3px 3px 3px #fff;
+}
+
+.centered {
+  text-align: center;
 }

@@ -2,6 +2,10 @@
   <%= stylesheet_link_tag 'tasks' %>
 <% end %>
 
+<h1 class="greeting">Good to see you again, <%= current_user.nickname %>!</h1>
+<h1 class="greeting-sub">Here's your progress:</h1>
+
+
 <table id="user-charts">
         <% @tasks.each_slice(3) do |row| %>
 <tr>
@@ -19,33 +23,6 @@
 <% end %>
 </table>
 
-<h1>Here are your tasks...</h1>
-<table>
-  <tr>
-    <th>Reminder type</th>
-    <th>Frequency</th>
-    <th>Reminder time</th>
-    <th>Message</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @tasks.each do |task| %>
-<%#= user = current_user %>
-  <tr>
-    <td><%= task.reminder_type %></td>
-    <td><%= task.frequency %></td>
-    <td><%= task.reminder_time %></td>
-    <td><%= task.message %></td>
-    <td><%= link_to "Show", [@user, task] %></td>
-    <td><%= link_to "Add Record", new_user_task_record_path(@user, task) %></td>    
-    <td><%= link_to "Edit", edit_user_task_path(@user, task) %></td>
-    <td><%= link_to "Destroy", [@user, task], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to "Add a Task!", new_user_task_path(@user) %>
+<h5 class="nav-links"><%= link_to "Manage Scheduled Messages", user_tasks_path(@user), :class => "nav-links" %></h5>
+<!-- AJAX Call : Insert all messages below -->
+<h5 class="nav-links"><%= link_to "Schedule a New Reminder", new_user_task_path(@user), :class => "nav-links" %></h5>

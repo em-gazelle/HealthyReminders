@@ -1,7 +1,13 @@
-<h1>New task</h1>
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'tasks/new' %>
+<% end %>
 
-Welcome, <%= current_user.nickname %> !
+<div class="header-new">
+  <%= image_tag("spoon-pills.jpg", :alt => " ", :class => "picture-new") %>
+</div>
+
+
+<h1 class="greeting">Managing your weight or medication?</h1>
+<h3 class="greeting-sub">We'll be the friend to text you.</h3>
 
 <%= render 'form' %>
-
-<%#= link_to 'Back', tasks_path %>

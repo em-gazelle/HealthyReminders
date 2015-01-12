@@ -11,24 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :reminder_type %><br />
-    <%= f.text_field :reminder_type %>
-  </div>
-  <div class="field">
-    <%= f.label :frequency %><br />
-    <%= f.text_field :frequency %>
-  </div>
-  <div class="field">
-    <%= f.label :reminder_time %><br />
-    <%= f.time_select :reminder_time %>
-  </div>
-  <div class="field">
-    <%= f.label :message %><br />
+  <ul class="horizontal-list centered">
+    <li>
+      <div class="field">
+        <li>
+          <%= f.label "I want help managing my" %><br />
+        </li>
+        <li>
+          <%= f.select(:reminder_type, ["Weight", "Medicine", "Supplements", "Vitamins"], {}) %>
+        </li>
+      </div>
+    </li>
+    <li>
+      <div class="field">
+        <li>
+          <%= f.label " by receiving daily texts at" %><br />
+        </li>
+          <%= f.time_select :reminder_time, {ampm: true} %>
+        </li>
+      </div>
+    </li>
+  </ul>
+
+  <div class="field centered">
+    <%= f.label "Please send me this text message:" %><br />
     <%= f.text_area :message %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions centered">
+    <%= f.submit "Schedule Reminder Text" %>
   </div>
 <% end %>
