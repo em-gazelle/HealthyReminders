@@ -1,24 +1,32 @@
-<h2>Sign up</h2>
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag 'tasks/new' %>
+<% end %>
+
+<div class="header-new">
+  <%= image_tag("spoon-pills.jpg", :alt => " ", :class => "picture-new") %>
+</div>
+
+
+<h1 class="greeting">Managing your weight or medication?</h1>
+<h3 class="greeting-sub">We'll be the friend to text you.</h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
+  <div class="centered"><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
 
-  <div><%= f.label :nickname %><br />
+  <div class="centered"><%= f.label :nickname %><br />
   <%= f.text_field :nickname, autofocus: true %></div>
 
-  <div><%= f.label :phone_number %><br />
+  <div class="centered"><%= f.label :phone_number %><br />
   <%= f.text_field :phone_number, autofocus: true %></div>
 
-  <div><%= f.label :password %><br />
+  <div class="centered"><%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div class="centered"><%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
-  <div><%= f.submit "Sign up" %></div>
+  <div class="greeting-sub-sub centered"><%= f.submit "~Sign up~" %></div>
 <% end %>
-
-<%= render "devise/shared/links" %>
