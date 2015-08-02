@@ -4,7 +4,7 @@ scheduler = Rufus::Scheduler.singleton
 
 # Look for new tasks in the database to schedule to send out once a day
 # Run scheduler every 30m? And then only let users choose hour/half hour blocks
-scheduler.every '1m' do
+scheduler.every '30m' do
 	puts "**Rufus scheduler is firing**"
 
 	# Rufus sends out texts through Twilio at designated time, daily
