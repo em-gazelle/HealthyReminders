@@ -7,38 +7,47 @@ puts "*********************************************Rufus Tasks booted***********
 
 
 # Look for new tasks in the database to schedule to send out once a day
-scheduler.every '1m' do
-	# Grabbing tasks and users for Phone Numbers + messages
-	@tasks = Task.all
-	# Refactor: Grab only relevant information (Phone + ID)
-	@users = User.all
-	puts "All information = obtained for Rufus Scheduler******************************************************************************"
+scheduler.every '3m' do
+	puts "**Rufus scheduler is firing**"
 
-	@users.each do |user|
-		# Phone number to send texts
-		@send_to = user.phone_number
-		puts "******************************************USer phone number: #{@send_to}"
-		# Temporary: Twilio can only send texts to users with a phone number and tasks with reminder times + messages. Will be unnecessary after adding more info into the seed file and validations
-		if user.phone_number.blank? == false
-		puts "******************************************USer phone number is not empty..."
-			# For each user, send out all reminder messages
-			user.tasks.each do |task|
-				# Texts should be sent at HH:MM. Time entered by users, in Tasks database
-				@cron_time = "#{task.reminder_time.strftime('%M')} #{task.reminder_time.strftime('%H')} * * *"
-				puts "**************************************** #{task.reminder_type} is being evaluated.........."
-				puts "***************************************************** and is to be sent out: #{@cron_time}"
-				# Using Rufus_Scheduler to send out texts through Twilio at designated time, daily
-				scheduler.cron @cron_time do
-					puts "Sending out this message: #{task.message} at: #{task.reminder_time}, aka #{Time.now}"
-					puts "-------******************************************************"
-					# Using Twilio to send messages
-					@client.account.messages.create({
-					  :from => ENV['TWILIO_NUMBER'], 
-					  :to => @send_to,
-					  :body => task.message
-					})
-				end
-			end
-		end
-	end
+	puts "This is the Twilio client: #{@client} "
+	@client.account.messages.create({
+	  :from => ENV['TWILIO_NUMBER'], 
+	  :to => '+14157577616',
+	  :body => "Don't forget to take your vitamins!"
+	})
+
+	# # Grabbing tasks and users for Phone Numbers + messages
+	# @tasks = Task.all
+	# # Refactor: Grab only relevant information (Phone + ID)
+	# @users = User.all
+	# puts "All information = obtained for Rufus Scheduler******************************************************************************"
+
+	# @users.each do |user|
+	# 	# Phone number to send texts
+	# 	@send_to = user.phone_number
+	# 	puts "******************************************USer phone number: #{@send_to}"
+	# 	# Temporary: Twilio can only send texts to users with a phone number and tasks with reminder times + messages. Will be unnecessary after adding more info into the seed file and validations
+	# 	if user.phone_number.blank? == false
+	# 	puts "******************************************USer phone number is not empty..."
+	# 		# For each user, send out all reminder messages
+	# 		user.tasks.each do |task|
+	# 			# Texts should be sent at HH:MM. Time entered by users, in Tasks database
+	# 			@cron_time = "#{task.reminder_time.strftime('%M')} #{task.reminder_time.strftime('%H')} * * *"
+	# 			puts "**************************************** #{task.reminder_type} is being evaluated.........."
+	# 			puts "***************************************************** and is to be sent out: #{@cron_time}"
+	# 			# Using Rufus_Scheduler to send out texts through Twilio at designated time, daily
+	# 			scheduler.cron @cron_time do
+	# 				puts "Sending out this message: #{task.message} at: #{task.reminder_time}, aka #{Time.now}"
+	# 				puts "-------******************************************************"
+	# 				# Using Twilio to send messages
+	# 				@client.account.messages.create({
+	# 				  :from => ENV['TWILIO_NUMBER'], 
+	# 				  :to => @send_to,
+	# 				  :body => task.message
+	# 				})
+	# 			end
+	# 		end
+	# 	end
+	# end
 end
