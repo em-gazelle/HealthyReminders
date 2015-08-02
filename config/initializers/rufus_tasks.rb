@@ -3,8 +3,8 @@
 scheduler = Rufus::Scheduler.new
 puts "*********************************************Rufus Tasks booted************************************************************"
 # Twilio Information -- should be relocated to .env file...
-account_sid = 'ACce2ac884ee78da5155fc87f7bbc0cb4a' 
-auth_token = '40f5a6b6a24f8cae7760b7151563a18a' 
+account_sid = 'ACce2ac884ee78da5155fc87f7bbc0cb4a'  
+auth_token = '4080f63106e48ffa5112cf750578caea' 
 @client = Twilio::REST::Client.new account_sid, auth_token 
 
 # Look for new tasks in the database to schedule to send out once a day
@@ -34,7 +34,7 @@ auth_token = '40f5a6b6a24f8cae7760b7151563a18a'
 					puts "-------******************************************************"
 					# Using Twilio to send messages
 					@client.account.messages.create({
-					  :from => '+16087136449', 
+					  :from => '+14159368708', 
 					  :to => @send_to,
 					  :body => task.message
 					})

@@ -7,10 +7,10 @@ common: &common
 
 development:
   <<: *common
-  host: localhost
+  # host: localhost
   database: HelpMeTakeMeds
 
 test:
   <<: *common
-  host: localhost
+  # host: localhost
   database: HelpMeTakeMeds

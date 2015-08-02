@@ -49,8 +49,8 @@ class RecordsController < ApplicationController
     @record = @task.records.build(params[:record])
 
     # set up a client to talk to the Twilio REST API 
-    account_sid = 'ACce2ac884ee78da5155fc87f7bbc0cb4a' 
-    auth_token = '40f5a6b6a24f8cae7760b7151563a18a' 
+    account_sid = ACCOUNT_SID 
+    auth_token = AUTH_TOKEN
     @client = Twilio::REST::Client.new account_sid, auth_token 
     # get user's number
     @user_number = "+" + current_user.phone_number
