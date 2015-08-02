@@ -62,5 +62,8 @@ module OpTakeMyMeds
     #For Heroku. Notice given during installation of gem 'Devise'
     config.assets.initialize_on_precompile = false
 
+    # Configuring Devise on Heroku to send out password reset links
+    config.action_mailer.default_url_options = { :host => 'pure-reaches-7966.heroku.com' }
+
   end
 end
