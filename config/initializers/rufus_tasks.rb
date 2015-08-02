@@ -8,14 +8,14 @@ puts "*********************************************Rufus Tasks booted***********
 
 # Look for new tasks in the database to schedule to send out once a day
 scheduler.every '3m' do
-	puts "**Rufus scheduler is firing**"
+	# puts "**Rufus scheduler is firing**"
 
-	puts "This is the Twilio client: #{@client} "
-	@client.account.messages.create({
-	  :from => ENV['TWILIO_NUMBER'], 
-	  :to => '+14157577616',
-	  :body => "Don't forget to take your vitamins!"
-	})
+	# puts "This is the Twilio client: #{@client} "
+	# @client.account.messages.create({
+	#   :from => ENV['TWILIO_NUMBER'], 
+	#   :to => '+14157577616',
+	#   :body => "Don't forget to take your vitamins!"
+	# })
 
 	# # Grabbing tasks and users for Phone Numbers + messages
 	# @tasks = Task.all
