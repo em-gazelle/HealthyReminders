@@ -51,6 +51,9 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.2.2)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     groupdate (2.3.0)
       activesupport (>= 3)
     hike (1.2.3)
@@ -149,6 +152,7 @@ DEPENDENCIES
   chartkick
   coffee-rails (~> 3.2.1)
   devise
+  figaro
   groupdate
   jquery-rails
   pg

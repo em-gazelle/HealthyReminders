@@ -43,6 +43,8 @@ gem 'twilio-ruby'
 # Used to send repeating and delayed "healthy reminders" -- gem Delayed Jobs
 gem 'rufus-scheduler'
 
+gem 'figaro'
+
 group :production do
   gem 'rails_12factor'
 end

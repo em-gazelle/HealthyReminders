@@ -1,11 +1,10 @@
 # Rufus_Tasks will be used to send out text messages to remind users to take their medication/supps/etc at users' desired time
 # This job will have to run daily to grab new tasks, or new tasks should be added after being created
-scheduler = Rufus::Scheduler.new
+scheduler = Rufus::Scheduler.singleton
 puts "*********************************************Rufus Tasks booted************************************************************"
 # Twilio Information -- should be relocated to .env file...
-account_sid = 'ACce2ac884ee78da5155fc87f7bbc0cb4a'  
-auth_token = '4080f63106e48ffa5112cf750578caea' 
-@client = Twilio::REST::Client.new account_sid, auth_token 
+@client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+
 
 # Look for new tasks in the database to schedule to send out once a day
 # scheduler.every '24h' do
@@ -34,7 +33,7 @@ auth_token = '4080f63106e48ffa5112cf750578caea'
 					puts "-------******************************************************"
 					# Using Twilio to send messages
 					@client.account.messages.create({
-					  :from => '+14159368708', 
+					  :from => ENV['TWILIO_NUMBER'], 
 					  :to => @send_to,
 					  :body => task.message
 					})
