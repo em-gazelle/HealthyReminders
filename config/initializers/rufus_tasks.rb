@@ -7,7 +7,7 @@ puts "*********************************************Rufus Tasks booted***********
 
 
 # Look for new tasks in the database to schedule to send out once a day
-# scheduler.every '24h' do
+scheduler.every '1m' do
 	# Grabbing tasks and users for Phone Numbers + messages
 	@tasks = Task.all
 	# Refactor: Grab only relevant information (Phone + ID)
@@ -41,4 +41,4 @@ puts "*********************************************Rufus Tasks booted***********
 			end
 		end
 	end
-# end
+end
